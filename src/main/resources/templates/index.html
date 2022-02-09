@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+</head>
+<body>
+<p th:text="${#dates.format(new java.util.Date(), 'dd/MMM/yyyy HH:mm')}"> </p>
+<p th:text="#{content.title}"> Hello title </p>
+<p th:text="#{content.message}"> message </p>
+<p><a th:href="@{'/home/'}">Link</a></p><br>
+<table th:object="${myPerson}">
+	<tr><th>Name</th><td th:text="*{name}"></td></tr>
+	<tr><th>Age</th><td th:text="*{age}"></td></tr>	
+</table>
+<div th:object="${myPerson}">
+	<p th:text="|My name is *{name}, age is *{age}.|" </p>
+</div>
+
+<table th:inline="text">
+<tr>
+	<th>Name</th>
+	<th>Email</th>
+</tr>
+<tr th:each="obj : ${myData}">
+	<td th:text="${obj[0]}"></td>
+	<td>[[${obj[1]}]]</td>
+</tr>
+</table>
+
+</body>
+</html>
